@@ -410,7 +410,10 @@
   gap: 0.85rem 1rem;
   width: 100%;
   max-width: 22rem;
-  margin-top: var(--space-lg);
+  /* Clear, measured space above the top row (the "left"/"right" controls
+     closest to the dish) — comfortably over the 16px minimum even when
+     the dish's highlight glow (14px) is active. */
+  margin-top: var(--space-xl);
 }
 
 @media (min-width: 860px) {
