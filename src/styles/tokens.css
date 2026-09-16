@@ -1,0 +1,56 @@
+:root {
+  /* Palette */
+  --color-tomato: #e3402a;
+  --color-tomato-dark: #b82f1d;
+  --color-yellow: #f6c445;
+  --color-cream: #fff6e9;
+  --color-cream-soft: #fef0da;
+  --color-ink: #201710;
+  --color-ink-soft: #4a3c30;
+  --color-lime: #b6e24d;
+  --color-white: #ffffff;
+
+  /* Surfaces */
+  --surface-page: var(--color-cream);
+  --surface-panel: var(--color-white);
+  --surface-dark: var(--color-ink);
+
+  /* Type */
+  --font-display: 'Archivo Black', 'Arial Black', 'Segoe UI', sans-serif;
+  --font-body: 'Inter', 'Segoe UI', system-ui, sans-serif;
+
+  --fs-display-xl: clamp(2.75rem, 6vw + 1rem, 6.5rem);
+  --fs-display-lg: clamp(2rem, 3.5vw + 1rem, 3.5rem);
+  --fs-display-md: clamp(1.5rem, 2vw + 1rem, 2.25rem);
+  --fs-body-lg: clamp(1.05rem, 0.5vw + 1rem, 1.25rem);
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: 6rem;
+
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --content-max: 72rem;
+
+  /* Radii */
+  --radius-sm: 0.75rem;
+  --radius-md: 1.5rem;
+  --radius-lg: 2.5rem;
+  --radius-pill: 999px;
+
+  /* Motion */
+  --duration-fast: 150ms;
+  --duration-base: 300ms;
+  --duration-slow: 600ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --rotate-duration: 18s;
+
+  /* Shadow */
+  --shadow-card: 0 12px 30px rgba(32, 23, 16, 0.12);
+  --shadow-sticker: 0 6px 16px rgba(32, 23, 16, 0.18);
+}
