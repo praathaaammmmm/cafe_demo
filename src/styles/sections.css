@@ -369,13 +369,21 @@
 }
 
 @media (min-width: 860px) {
+  /* One intentional composition: a 2x2 grid with the dish spanning both
+     rows in the centre column, so spacing is uniform on every side and
+     nothing needs percentage-based positioning to avoid overlap. Height
+     is driven entirely by the content, not a fixed square box. */
   .ingredient-story__stage-inner {
-    position: relative;
-    width: min(100%, 34rem);
-    aspect-ratio: 1 / 1;
+    display: grid;
+    grid-template-columns: auto minmax(18rem, 26rem) auto;
+    grid-template-areas: 'tl dish tr' 'bl dish br';
+    align-items: center;
+    justify-items: center;
+    column-gap: 2.75rem;
+    row-gap: 1.75rem;
+    width: fit-content;
+    max-width: 100%;
     margin-inline: auto;
-    flex-direction: row;
-    justify-content: center;
   }
 }
 
@@ -394,7 +402,9 @@
 
 @media (min-width: 860px) {
   .ingredient-story__dish {
-    width: 72%;
+    grid-area: dish;
+    width: 100%;
+    max-width: 26rem;
   }
 }
 
@@ -417,12 +427,12 @@
 }
 
 @media (min-width: 860px) {
+  /* The wrapper drops out of the box tree so its four children become
+     direct grid items and can be placed straight into the layout above. */
   .ingredient-story__hotspots {
-    position: absolute;
-    inset: 0;
+    display: contents;
     max-width: none;
     margin-top: 0;
-    display: block;
   }
 }
 
@@ -434,90 +444,23 @@
 
 @media (min-width: 860px) {
   .ingredient-hotspot {
-    position: absolute;
-    /* Must outrank the dish's z-index so the left/right controls (which
-       sit over the dish's rectangular image box) stay tappable instead of
-       having their clicks intercepted by the image on top. */
-    z-index: 2;
+    display: block;
   }
 
   .ingredient-hotspot:nth-of-type(1) {
-    top: 4%;
-    left: 50%;
-    transform: translateX(-50%);
+    grid-area: tl;
   }
 
   .ingredient-hotspot:nth-of-type(2) {
-    top: 50%;
-    right: 2%;
-    transform: translateY(-50%);
+    grid-area: tr;
   }
 
   .ingredient-hotspot:nth-of-type(3) {
-    bottom: 4%;
-    left: 50%;
-    transform: translateX(-50%);
+    grid-area: bl;
   }
 
   .ingredient-hotspot:nth-of-type(4) {
-    top: 50%;
-    left: 2%;
-    transform: translateY(-50%);
-  }
-
-  /* Short connector line pointing from each control toward the dish —
-     desktop only, where the controls orbit tight to the food. */
-  .ingredient-hotspot::after {
-    content: '';
-    position: absolute;
-    background: repeating-linear-gradient(
-      to bottom,
-      var(--color-tomato) 0 4px,
-      transparent 4px 8px
-    );
-    z-index: 0;
-  }
-
-  .ingredient-hotspot:nth-of-type(1)::after {
-    top: 100%;
-    left: 50%;
-    width: 2px;
-    height: 0.85rem;
-    transform: translateX(-50%);
-  }
-
-  .ingredient-hotspot:nth-of-type(3)::after {
-    bottom: 100%;
-    left: 50%;
-    width: 2px;
-    height: 0.85rem;
-    transform: translateX(-50%);
-  }
-
-  .ingredient-hotspot:nth-of-type(2)::after {
-    right: 100%;
-    top: 50%;
-    width: 0.85rem;
-    height: 2px;
-    transform: translateY(-50%);
-    background: repeating-linear-gradient(
-      to right,
-      var(--color-tomato) 0 4px,
-      transparent 4px 8px
-    );
-  }
-
-  .ingredient-hotspot:nth-of-type(4)::after {
-    left: 100%;
-    top: 50%;
-    width: 0.85rem;
-    height: 2px;
-    transform: translateY(-50%);
-    background: repeating-linear-gradient(
-      to right,
-      var(--color-tomato) 0 4px,
-      transparent 4px 8px
-    );
+    grid-area: br;
   }
 }
 
@@ -543,7 +486,15 @@
   .ingredient-hotspot__trigger {
     width: auto;
     max-width: none;
-    padding: 0.4rem 0.6rem;
+    flex-direction: row;
+    gap: 0.65rem;
+    padding: 0.65rem 1.1rem;
+    /* A clearly bounded card by default (not just on hover) so each
+       control reads as an intentional piece of the layout rather than a
+       loose icon floating on the section background. */
+    background: var(--surface-panel);
+    border-color: transparent;
+    box-shadow: var(--shadow-card);
   }
 }
 
@@ -556,8 +507,8 @@
 
 @media (min-width: 860px) {
   .ingredient-hotspot__trigger img {
-    width: 3.25rem;
-    height: 3.25rem;
+    width: 3rem;
+    height: 3rem;
   }
 }
 
@@ -584,7 +535,9 @@
 
 @media (min-width: 860px) {
   .ingredient-hotspot__label {
-    font-size: 0.75rem;
+    font-size: 0.95rem;
+    text-align: left;
+    white-space: nowrap;
   }
 }
 
@@ -605,6 +558,7 @@
 
 @media (min-width: 860px) {
   .ingredient-story__detail {
+    margin-top: var(--space-md);
     gap: var(--space-md);
     padding: var(--space-md) var(--space-lg);
   }
