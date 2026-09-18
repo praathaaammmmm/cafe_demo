@@ -92,8 +92,20 @@ export const cafeData: CafeData = {
   atmosphere: {
     heading: 'More than a takeout counter.',
     body:
-      '[Placeholder copy — replace with a short, client-approved description of what it feels like to sit down and eat here.]',
-    placeholderImageAlt: 'Placeholder — real café interior photo to be added',
+      'Pull up a chair, share a slice, and stay for the cheese pull. Every plate is made for the kind of table talk that makes you forget to check the time.',
+    videoSrc: '/assets/cafe/cheese-pull.mp4',
+    videoPoster: '/assets/cafe/toasted-wrap.jpeg',
+    videoAlt: 'A freshly made cheesy wrap being lifted from a wooden board',
+    photos: [
+      {
+        src: '/assets/cafe/toasted-wrap.jpeg',
+        alt: 'A hand lifting a toasted cheesy wrap with melted cheese stretching between the halves',
+      },
+      {
+        src: '/assets/cafe/cheese-pull-pizza.jpeg',
+        alt: 'Hands lifting a gooey cheese-covered pizza slice from a wooden serving board',
+      },
+    ],
   },
 
   visit: {

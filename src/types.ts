@@ -27,7 +27,10 @@ export interface FoodCategory {
 export interface AtmosphereContent {
   heading: string;
   body: string;
-  placeholderImageAlt: string;
+  videoSrc: string;
+  videoPoster: string;
+  videoAlt: string;
+  photos: { src: string; alt: string }[];
 }
 
 export interface VisitContent {
